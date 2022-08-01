@@ -1,1 +1,1 @@
-# My persional astronvim user config
+# My persional Astronvim user config
