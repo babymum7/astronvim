@@ -4,7 +4,11 @@ local config = {
   colorscheme = "gruvbox",
   options = {g = {go_metalinter_command = "golangci-lint"}},
   plugins = {
-    init = {{"fatih/vim-go"}, {"ellisonleao/gruvbox.nvim"}},
+    init = {
+      {"fatih/vim-go"},
+      {"folke/trouble.nvim", require = "kyazdani42/nvim-web-devicons"},
+      {"ellisonleao/gruvbox.nvim"}
+    },
     ["neo-tree"] = function(config)
       config.window.width = 30
       config.filesystem.filtered_items.hide_dotfiles = false
@@ -17,7 +21,12 @@ local config = {
       config.sources = {
         null_ls.builtins.formatting.lua_format.with({
           extra_args = {"--tab-width", "2", "--indent-width", "2"}
-        }), null_ls.builtins.diagnostics.golangci_lint
+        }), null_ls.builtins.diagnostics.golangci_lint.with({
+          args = {
+            "run", "--fix=false", "--fast", "--out-format=json", "$DIRNAME",
+            "--path-prefix", "$ROOT"
+          }
+        })
       }
 
       return config
