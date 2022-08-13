@@ -1,7 +1,7 @@
 local ls_util = require("lspconfig/util")
 
 local config = {
-  colorscheme = "gruvbox",
+  colorscheme = "tokyonight",
   options = {
     opt = { spell = false, spelllang = "en" },
     g = { go_metalinter_command = "golangci-lint" },
@@ -14,6 +14,7 @@ local config = {
   plugins = {
     init = {
       { "fatih/vim-go" },
+      { "folke/tokyonight.nvim" },
       { "folke/trouble.nvim", require = "kyazdani42/nvim-web-devicons" },
       { "ellisonleao/gruvbox.nvim" },
     },
